@@ -3,7 +3,9 @@ import styles from '../styles/page.module.css'
 export default function Home() {
   return (
     <main className={styles.main}>
-     <h3>hello</h3>
+     <div className={styles[`main--content`]}>
+      <h1>hello</h1>
+     </div>
 
     </main>
   )
