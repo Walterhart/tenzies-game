@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.main--content {
+  padding: 6rem;
+  width: 80%;
+  height: 80%;
+  background-color: whitesmoke;
+}
