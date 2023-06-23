@@ -46,12 +46,11 @@
   align-items: center;
   cursor: pointer;
   background-color: white;
+   margin-right: 0.5rem;
 }
  
 
-.dice--number-space {
-  margin-right: 0.7rem;
-}
+
 
 .dice--font{
   font-size: 2rem;
