@@ -10,7 +10,7 @@ export default function Home() {
 
   const getRandomDiceArray = () => {
     const randomDiceArray = Array(10).fill(1).map(() => {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
+      return {value : Math.floor(Math.random() * (max - min + 1)) + min , isHold: false}
     });
 
     return randomDiceArray;
@@ -22,7 +22,7 @@ export default function Home() {
 
   const dicesElement = dices.map((num, index) => (
     <div key={index} className={styles['dice--box']}>
-      <Dice value={num} />
+      <Dice value={num.value} />
     </div>
   ));
 
