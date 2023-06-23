@@ -9,8 +9,8 @@ export default function Home() {
   const max = 10;
 
   const getRandomDiceArray = () => {
-    const randomDiceArray = Array(10).fill(1).map(() => {
-      return {value : Math.floor(Math.random() * (max - min + 1)) + min , isHold: false}
+    const randomDiceArray = Array(10).fill(1).map((num,index) => {
+      return {value : Math.floor(Math.random() * (max - min + 1)) + min , isHold: false , id: index}
     });
 
     return randomDiceArray;
@@ -20,16 +20,32 @@ export default function Home() {
     setDices(getRandomDiceArray());
   }, []);
 
-  const dicesElement = dices.map((num, index) => (
-    <div key={index} className={styles['dice--box']}>
-      <Dice value={num.value} />
-    </div>
-  ));
-
   const reRollDices = () =>{
     setDices(getRandomDiceArray)
   }
 
+  const dicesElement = dices.map((num) => (
+    <div key={num.id} className={styles['dice--box']}>
+      <Dice  value={num.value} isHold ={num.isHold} holdDice = {()=>holdDice(num.id)}/>
+    </div>
+  ));
+
+
+  
+  const holdDice = (id) => {
+    setDices(prevDice => {
+      const updatedDices = prevDice.map(num => {
+        if (num.id === id) {
+          return {
+            ...num,
+            isHold: !num.isHold
+          };
+        }
+        return num;
+      });
+      return updatedDices;
+    });
+  };
   return (
     <main className={styles.main}>
       <div className={styles['main--content']}>
