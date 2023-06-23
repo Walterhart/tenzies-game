@@ -1,14 +1,58 @@
 .main {
   display: flex;
   justify-content: center;
-  text-align: center;
   align-items: center;
   height: 90vh;
 }
 
 .main--content {
-  padding: 6rem;
-  width: 80%;
-  height: 80%;
-  background-color: whitesmoke;
+  
+  width: 90%;
+  height: 60%;
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: auto;
+  overflow: hidden; 
+}
+@media (min-width:1000px) {
+  .main--content{
+    width: 50%;
+    height: 50%;
+  }
+}
+.dices--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dice--row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+ .dice--box {
+  height: 50px;
+  width: 50px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: white;
+}
+ 
+
+.dice--number-space {
+  margin-right: 0.7rem;
+}
+
+.dice--font{
+  font-size: 2rem;
 }
