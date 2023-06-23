@@ -26,6 +26,10 @@ export default function Home() {
     </div>
   ));
 
+  const reRollDices = () =>{
+    setDices(getRandomDiceArray)
+  }
+
   return (
     <main className={styles.main}>
       <div className={styles['main--content']}>
@@ -37,6 +41,7 @@ export default function Home() {
             {dicesElement.slice(5, 10)} 
           </div>
         </div>
+        <button className={styles['reRoll--btn']} onClick={reRollDices}> Roll</button>
       </div>
     </main>
   );
