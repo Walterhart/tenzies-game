@@ -6,12 +6,24 @@ import styles from "../styles/page.module.css";
 
 export default function Home() {
   const [dices, setDices] = useState([]);
+  const [hasWon, setHasWon] = useState(false);
   const min = 0;
   const max = 10;
 
   useEffect(() => {
     setDices(getRandomDiceArray());
   }, []);
+
+  useEffect(() => {
+    const allDiceHold = dices.every((die) => die.isHold);
+    const [firstValue, ...restValues] = dices.map((dice) => dice.value);
+    const allSameValue = restValues.every((value) => value === firstValue);
+
+    if (allDiceHold && allSameValue) {
+      setHasWon(true);
+      console.log("You won!");
+    }
+  }, [dices]);
 
   const getRandomDiceArray = () => {
     const randomDiceArray = Array(10)
@@ -53,6 +65,11 @@ export default function Home() {
     </div>
   ));
 
+  const resetGame = () => {
+    setHasWon(false);
+    setDices(getRandomDiceArray());
+  };
+
   return (
     <main className={styles.main}>
       <div className={styles["main--content"]}>
@@ -60,8 +77,11 @@ export default function Home() {
           <div className={styles["dice--row"]}>{dicesElement.slice(0, 5)}</div>
           <div className={styles["dice--row"]}>{dicesElement.slice(5, 10)}</div>
         </div>
-        <button className={styles["reRoll--btn"]} onClick={reRollDices}>
-          Roll
+        <button
+          className={styles[hasWon ? "reset--btn" : "reRoll--btn"]}
+          onClick={hasWon ? resetGame : reRollDices}
+        >
+          {hasWon ? "Reset" : "Roll"}
         </button>
       </div>
     </main>
