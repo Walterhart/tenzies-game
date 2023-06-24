@@ -56,13 +56,14 @@ export default function Home() {
   };
 
   const dicesElement = dices.map((num) => (
-    <div key={num.id} className={styles["dice--box"]}>
+   
       <Dice
+        key={num.id} 
         value={num.value}
         isHold={num.isHold}
         holdDice={() => holdDice(num.id)}
       />
-    </div>
+  
   ));
 
   const resetGame = () => {
@@ -73,8 +74,8 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles["main--content"]}>
-        <h2>Tenzies</h2>
-        <p>Roll all the dice and hold any desired dice for the next roll. Continue rolling and holding until all dice show the same value or choose to hold all dice to win.</p>
+        <h2 className={styles["header--text"]}>Tenzies</h2>
+        <p >Roll all the dice and hold any desired dice for the next roll. Continue rolling and holding until all dice show the same value or choose to hold all dice to win.</p>
         <div className={styles["dices--container"]}>
           <div className={styles["dice--row"]}>{dicesElement.slice(0, 5)}</div>
           <div className={styles["dice--row"]}>{dicesElement.slice(5, 10)}</div>
