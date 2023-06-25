@@ -2,7 +2,7 @@
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>This is the footer component.</p>
+      <h3> <a href="https://github.com/Walterhart"> My github</a></h3>
     </footer>
   );
 };
